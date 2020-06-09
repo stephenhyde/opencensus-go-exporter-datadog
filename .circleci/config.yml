@@ -20,8 +20,8 @@ jobs:
                     name: Testing
                     command: |
                         go vet ./...
-                        golint $(go list ./... | grep -v /vendor/)
-                        INTEGRATION=1 go test -v -race ./...
+                        golint $(go list ./... | grep -v /vendor/ )
+                        INTEGRATION=1 go test -v -race $(go list ./... | grep -v /vendor/ | grep -v /examples/)
 
 workflows:
   version: 2
